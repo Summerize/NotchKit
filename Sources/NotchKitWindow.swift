@@ -222,8 +222,10 @@ public final class NotchKitWindow: UIWindow {
     }
     
     private func updateSafeAreaInsets() {
-        guard let insets = rootViewController?.view.safeAreaInsets else {
-            return
+        if #available(iOS 11, *) {
+            guard let insets = rootViewController?.view.safeAreaInsets else {
+                return
+            }
         }
         
         let finalInsets = UIEdgeInsets(
